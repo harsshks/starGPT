@@ -1,0 +1,46 @@
+.mode-switcher {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mode-label {
+  font-size: 12px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mode-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.mode-button {
+  flex: 1;
+  padding: 6px 12px;
+  background-color: #363636;
+  color: #e0e0e0;
+  border: 1px solid #555;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  text-transform: capitalize;
+  transition: all 0.2s;
+}
+
+.mode-button:hover:not(:disabled) {
+  background-color: #404040;
+  border-color: #666;
+}
+
+.mode-button.active {
+  background-color: #4a9eff;
+  color: white;
+  border-color: #4a9eff;
+}
+
+.mode-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

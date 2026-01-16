@@ -1,0 +1,105 @@
+.message-bubble {
+  max-width: 75%;
+  padding: 16px 20px;
+  border-radius: 20px;
+  word-wrap: break-word;
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.message-bubble.user {
+  align-self: flex-end;
+  background: var(--bg-message-user);
+  color: var(--text-on-blue);
+  border-bottom-right-radius: 8px;
+  margin-left: auto;
+}
+
+.message-bubble.assistant {
+  align-self: flex-start;
+  background: var(--bg-message-assistant);
+  color: var(--text-primary);
+  border-bottom-left-radius: 8px;
+  border: 1px solid var(--border-secondary);
+}
+
+.message-content {
+  line-height: 1.6;
+  white-space: pre-wrap;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+
+.message-bubble.user .message-content {
+  font-weight: 500;
+}
+
+.streaming-cursor {
+  display: inline-block;
+  margin-left: 4px;
+  animation: pulse 1.5s infinite;
+  color: var(--text-accent);
+  font-weight: bold;
+}
+
+@keyframes pulse {
+  0%, 50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  25%, 75% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.message-time {
+  font-size: 11px;
+  margin-top: 8px;
+  opacity: 0.6;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.message-bubble.user .message-time {
+  text-align: right;
+  color: rgba(245, 242, 242, 0.8);
+}
+
+.message-bubble.assistant .message-time {
+  color: var(--text-muted);
+}
+
+/* Code block styling */
+.message-content pre {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 13px;
+}
+
+.message-content code {
+  background: var(--bg-primary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 13px;
+  border: 1px solid var(--border-secondary);
+}
