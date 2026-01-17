@@ -61,6 +61,10 @@ export const conversationAPI = {
     const res = await api.patch(`/conversations/${conversationId}`, updates);
     return res.data;
   },
+  delete: async (conversationId) => {
+    const res = await api.delete(`/conversations/${conversationId}`);
+    return res.data;
+  },
 };
 
 export default api;

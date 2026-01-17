@@ -4,6 +4,7 @@ const {
   createConversation,
   listUserConversations,
   updateConversation,
+  deleteConversation,
 } = require('../controllers/conversationController');
 
 const router = express.Router();
@@ -14,6 +15,7 @@ router.use(authMiddleware);
 router.post('/', createConversation);
 router.get('/', listUserConversations);
 router.patch('/:id', updateConversation);
+router.delete('/:id', deleteConversation);
 
 module.exports = router;
 

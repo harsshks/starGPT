@@ -96,6 +96,24 @@ export const ChatProvider = ({ children }) => {
     [switchConversation]
   );
 
+  // Delete a conversation
+  const deleteConversation = useCallback(
+    async (conversationId) => {
+      try {
+        await conversationAPI.delete(conversationId);
+        setConversations((prev) => prev.filter((c) => c.id !== conversationId));
+        if (activeConversationId === conversationId) {
+          setActiveConversationId(null);
+          setMessages([]);
+        }
+      } catch (err) {
+        console.error('Failed to delete conversation:', err);
+        throw err;
+      }
+    },
+    [activeConversationId]
+  );
+
   // Send a message and stream the response
   const sendMessage = useCallback(
     async (content) => {
@@ -203,6 +221,7 @@ export const ChatProvider = ({ children }) => {
     loadMessages,
     switchConversation,
     createConversation,
+    deleteConversation,
     sendMessage,
     login,
     register,

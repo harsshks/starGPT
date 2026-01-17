@@ -9,6 +9,7 @@ function Sidebar() {
     activeConversationId,
     switchConversation,
     createConversation,
+    deleteConversation,
     logout,
     user,
   } = useChat();
@@ -51,6 +52,17 @@ function Sidebar() {
                 <span className="conversation-date">
                   {new Date(conv.createdAt).toLocaleDateString()}
                 </span>
+                <button
+                  className="delete-conv-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (window.confirm('Delete this chat?')) {
+                      deleteConversation(conv.id);
+                    }
+                  }}
+                >
+                  ×
+                </button>
               </div>
             </div>
           ))
