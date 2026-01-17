@@ -1,14 +1,16 @@
 {
-  "name": "stargpt-backend",
+  "name": "stargpt-fullstack",
   "version": "1.0.0",
-  "description": "Backend for StarGPT AI chat application (auth setup)",
-  "main": "server.js",
+  "description": "Full-stack StarGPT AI chat application",
+  "main": "backend/server.js",
   "scripts": {
     "dev": "nodemon backend/server.js",
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "build": "cd frontend && npm install && npm run build",
+    "heroku-postbuild": "cd frontend && npm install && npm run build && cd ../backend && npm install"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["ai", "chat", "gemini", "react", "nodejs"],
+  "author": "Your Name",
   "license": "MIT",
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
@@ -19,9 +21,14 @@
     "express-rate-limit": "^8.2.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.6.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   }
 }

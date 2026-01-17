@@ -116,3 +116,35 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Mobile Message Input */
+@media (max-width: 768px) {
+  .message-input-container {
+    padding: 16px;
+    /* Safe area for iOS devices */
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+  
+  .message-input-form {
+    gap: 8px;
+  }
+  
+  .message-input {
+    padding: 12px 16px;
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 12px;
+    max-height: 120px;
+  }
+  
+  .send-button {
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    min-width: 60px;
+  }
+  
+  /* Adjust for virtual keyboard */
+  .message-input:focus {
+    transform: none; /* Remove transform on mobile to prevent layout issues */
+  }
+}

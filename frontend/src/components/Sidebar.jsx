@@ -3,7 +3,7 @@ import { useChat } from '../contexts/ChatContext';
 import ModeSwitcher from './ModeSwitcher';
 import './Sidebar.css';
 
-function Sidebar() {
+function Sidebar({ isOpen, onClose }) {
   const {
     conversations,
     activeConversationId,
@@ -17,13 +17,30 @@ function Sidebar() {
   const handleNewChat = async () => {
     const title = `New Chat ${new Date().toLocaleTimeString()}`;
     await createConversation(title, 'default');
+    // Close sidebar on mobile after creating new chat
+    if (window.innerWidth <= 768 && onClose) {
+      onClose();
+    }
+  };
+
+  const handleConversationClick = (conversationId) => {
+    switchConversation(conversationId);
+    // Close sidebar on mobile after selecting conversation
+    if (window.innerWidth <= 768 && onClose) {
+      onClose();
+    }
   };
 
   const activeConversation = conversations.find((c) => c.id === activeConversationId);
 
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-header">
+        {onClose && (
+          <button className="sidebar-close" onClick={onClose}>
+            ×
+          </button>
+        )}
         <h2>StarGPT</h2>
         <button className="new-chat-btn" onClick={handleNewChat}>
           + New Chat
@@ -44,7 +61,7 @@ function Sidebar() {
             <div
               key={conv.id}
               className={`conversation-item ${conv.id === activeConversationId ? 'active' : ''}`}
-              onClick={() => switchConversation(conv.id)}
+              onClick={() => handleConversationClick(conv.id)}
             >
               <div className="conversation-title">{conv.title}</div>
               <div className="conversation-meta">

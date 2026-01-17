@@ -103,3 +103,33 @@
   font-size: 13px;
   border: 1px solid var(--border-secondary);
 }
+
+/* Mobile Message Bubbles */
+@media (max-width: 768px) {
+  .message-bubble {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 16px;
+  }
+  
+  .message-content {
+    font-size: 14px;
+  }
+  
+  .message-time {
+    font-size: 10px;
+    margin-top: 6px;
+  }
+  
+  /* Code blocks on mobile */
+  .message-content pre {
+    padding: 8px;
+    font-size: 12px;
+    margin: 6px 0;
+  }
+  
+  .message-content code {
+    font-size: 12px;
+    padding: 1px 4px;
+  }
+}
