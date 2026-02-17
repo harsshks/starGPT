@@ -16,7 +16,6 @@ A modern, full-stack AI chat application powered by Google's Gemini API with rea
 - 🔐 **User Authentication** - Secure JWT-based authentication system
 - 🎨 **Modern UI** - Beautiful, responsive interface with smooth animations
 - 📱 **Responsive Design** - Works seamlessly on desktop and mobile devices
-- 🌙 **Dark Theme** - Eye-friendly dark mode with custom color palette
 - ⚡ **Fast & Efficient** - Optimized performance with rate limiting and context management
 - 💾 **Persistent Storage** - MongoDB for reliable data persistence
 - 🔒 **Production Ready** - Built with security and scalability in mind
