@@ -2,12 +2,20 @@
   display: flex;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
   position: relative;
+  background-color: var(--bg-deep);
+  overflow: hidden;
 }
 
 .sidebar-overlay {
-  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 40;
 }
 
 /* Mobile Layout */
@@ -15,21 +23,17 @@
   .chat-layout {
     flex-direction: column;
   }
-  
+
+  .chat-layout.sidebar-open {
+    overflow: hidden;
+  }
+
   /* Mobile sidebar overlay */
   .chat-layout.sidebar-open .sidebar {
     transform: translateX(0);
   }
-  
-  .sidebar-overlay {
+
+  .chat-layout.sidebar-open .sidebar-overlay {
     display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    backdrop-filter: blur(2px);
   }
 }

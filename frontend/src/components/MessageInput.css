@@ -1,33 +1,41 @@
 .message-input-container {
-  padding: 24px;
-  border-top: 1px solid var(--border-secondary);
-  background: var(--bg-secondary);
-  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  background: transparent;
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .message-input-form {
+  position: relative;
   display: flex;
-  gap: 12px;
   align-items: flex-end;
-  max-width: 1000px;
-  margin: 0 auto;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.2s ease;
+}
+
+.message-input-form:focus-within {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2), var(--shadow-lg);
 }
 
 .message-input {
   flex: 1;
-  padding: 16px 20px;
-  background: var(--bg-input);
+  background: transparent;
+  border: none;
   color: var(--text-primary);
-  border: 2px solid var(--border-secondary);
-  border-radius: 16px;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  min-height: 24px;
+  max-height: 200px;
   resize: none;
   font-family: inherit;
-  font-size: 15px;
   line-height: 1.5;
-  max-height: 200px;
-  overflow-y: auto;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--shadow-sm);
 }
 
 .message-input::placeholder {
@@ -36,28 +44,17 @@
 
 .message-input:focus {
   outline: none;
-  border-color: var(--border-accent);
-  box-shadow: 0 0 0 3px rgba(90, 122, 205, 0.1);
-  transform: translateY(-1px);
-}
-
-.message-input:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  background: var(--bg-primary);
 }
 
 .send-button {
-  padding: 16px 24px;
-  background: var(--bg-button);
-  color: var(--text-on-orange);
+  background: var(--gradient-main);
+  color: white;
   border: none;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-size: 0.9rem;
   cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: nowrap;
   box-shadow: var(--shadow-md);
   position: relative;
   overflow: hidden;
@@ -113,38 +110,25 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-/* Mobile Message Input */
 @media (max-width: 768px) {
   .message-input-container {
-    padding: 16px;
-    /* Safe area for iOS devices */
-    padding-bottom: max(16px, env(safe-area-inset-bottom));
+    padding: 1rem;
   }
-  
+
   .message-input-form {
-    gap: 8px;
+    padding: 0.5rem;
   }
-  
-  .message-input {
-    padding: 12px 16px;
-    font-size: 16px; /* Prevents zoom on iOS */
-    border-radius: 12px;
-    max-height: 120px;
-  }
-  
+
   .send-button {
-    padding: 12px 16px;
-    border-radius: 12px;
-    font-size: 14px;
-    min-width: 60px;
-  }
-  
-  /* Adjust for virtual keyboard */
-  .message-input:focus {
-    transform: none; /* Remove transform on mobile to prevent layout issues */
+    padding: 0.5rem;
   }
 }
