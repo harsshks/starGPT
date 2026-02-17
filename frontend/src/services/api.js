@@ -1,6 +1,25 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Helper to get base URL without trailing slash
+const getBaseUrl = () => {
+  let url = import.meta.env.VITE_API_URL;
+  
+  // If VITE_API_URL is not set, use relative path (works for same-origin deployments)
+  if (!url) {
+    return '/api';
+  }
+  
+  if (url.endsWith('/')) {
+    url = url.slice(0, -1);
+  }
+  // Ensure we don't duplicate /api if it's already in the env var
+  if (!url.endsWith('/api')) {
+    url += '/api';
+  }
+  return url;
+};
+
+export const API_BASE_URL = getBaseUrl();
 
 // Create axios instance with default config
 const api = axios.create({

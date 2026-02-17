@@ -1,13 +1,15 @@
 /**
  * SSE streaming service using fetch (supports custom headers unlike EventSource)
  */
+import { API_BASE_URL } from './api';
+
 export function createChatStream({ conversationId, message, token, onChunk, onDone, onError }) {
   const query = new URLSearchParams({
     conversationId,
     message,
   }).toString();
 
-  const url = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/chat/stream?${query}`;
+  const url = `${API_BASE_URL}/chat/stream?${query}`;
 
   const controller = new AbortController();
 
